@@ -1,53 +1,174 @@
-# CA Monk - Blog Application Assignment
+# CA Monk Blog Application ✅
 
-Welcome to the CA Monk Blog Application assignment! This project tests your ability to build a modern React application with state management, styling, and component libraries.
+A modern, responsive blog application built with React, TypeScript, TanStack Query, Tailwind CSS, and shadcn/ui components.
 
-## Installation
+## 🚀 Features
+
+✅ **Complete Blog Management System**
+- View all blogs with pagination and search
+- Individual blog detail pages with rich content
+- Create new blogs with form validation
+- Category-based organization
+- Responsive design for all devices
+
+✅ **Modern Tech Stack**
+- **React 19** with **TypeScript** for type safety
+- **TanStack Query** for server state management
+- **Tailwind CSS** for styling and responsive design
+- **shadcn/ui** for consistent, accessible UI components
+- **Vite** for fast development and optimized builds
+
+✅ **Professional Features**
+- Loading states with skeleton loaders
+- Error boundaries and proper error handling
+- Form validation with user-friendly feedback
+- Mobile-responsive design
+- Clean, modern UI/UX
+- Query invalidation and caching
+
+## 🛠️ Installation & Setup
 
 ### Prerequisites
 - Node.js (v18 or higher)
-- Git
-- React.js knowledge
-- Familiarity with TanStack Query, Tailwind CSS, and shadcn/ui.
+- npm or yarn package manager
 
-### Setup Instructions
+### Quick Start
 
-1. **Fork the repository**
-   - Click **Fork** on GitHub to create a copy in your account.
-   - Clone your forked repository:
-     ```bash
-     git clone <your-forked-repo-url>
-     cd camonk-interview
-     ```
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/rishu685/blog_assignment.git
+   cd blog_assignment
+   ```
 
 2. **Install dependencies**
    ```bash
    npm install
    ```
 
-3. **Install required libraries for the assignment** , ie, TanStack Query, Tailwind CSS, and  shadcn/ui
-4. **Start the JSON Server (Backend API)**
+3. **Start the JSON Server (Backend)**
    ```bash
    npm run server
    ```
-   The API will run on `http://localhost:3001`
+   > API runs on http://localhost:3001
 
-5. **Start the Development Server (in a new terminal)**
+4. **Start the Development Server (New Terminal)**
    ```bash
    npm run dev
    ```
-   The app will run on `http://localhost:5173`
+   > App runs on http://localhost:5173
 
-## Assignment Tasks
+## 📱 Usage
 
-You are required to build a blog application with the following features:
+### Viewing Blogs
+- Browse all blogs in the left panel
+- Click any blog card to view full content
+- Categories are displayed as badges
+- Responsive design adapts to screen size
 
-### Required Technologies
-- ✅ **TanStack Query** - For server state management and data fetching
-  - 📚 [Documentation](https://tanstack.com/query/latest)
-- ✅ **Tailwind CSS** - For styling
-  - 📚 [Documentation](https://tailwindcss.com/docs)
-- ✅ **shadcn/ui** - For UI components
+### Creating Blogs
+- Click "New Blog" button
+- Fill out the form with required information:
+  - Title (required)
+  - Categories (add multiple tags)
+  - Description (required)
+  - Cover Image URL (required)
+  - Full content (required)
+- Form validation provides immediate feedback
+- Successfully created blogs appear immediately in the list
+
+## 🏗️ Project Structure
+
+```
+src/
+├── components/          # React components
+│   ├── ui/             # shadcn/ui components
+│   ├── BlogList.tsx    # Blog listing component
+│   ├── BlogCard.tsx    # Individual blog card
+│   ├── BlogDetail.tsx  # Blog detail view
+│   ├── CreateBlogForm.tsx # Blog creation form
+│   └── ErrorBoundary.tsx # Error handling
+├── hooks/              # Custom React hooks
+│   └── useBlogs.ts     # TanStack Query hooks
+├── lib/                # Utilities and API
+│   ├── api/           # API service layer
+│   └── utils.ts       # Helper functions
+├── types/             # TypeScript type definitions
+│   └── blog.ts        # Blog-related types
+├── App.tsx            # Main application component
+└── main.tsx           # Application entry point
+```
+
+## 🎨 Design System
+
+- **Color Scheme**: Clean, professional palette
+- **Typography**: System fonts with proper hierarchy
+- **Components**: shadcn/ui for consistency
+- **Responsive**: Mobile-first design approach
+- **Accessibility**: WCAG compliant components
+
+## 🔧 Technical Highlights
+
+### State Management
+- **TanStack Query** for server state
+- Automatic caching and background updates
+- Query invalidation after mutations
+- Loading and error states handled globally
+
+### Type Safety
+- **Full TypeScript coverage**
+- Strict type checking enabled
+- Custom types for all data models
+- Type-safe API calls
+
+### Performance
+- **Vite** for fast development
+- **React 19** with modern features
+- Optimized bundle size
+- Efficient re-rendering patterns
+
+## 📦 Build & Deployment
+
+### Development
+```bash
+npm run dev        # Start development server
+npm run server     # Start JSON server
+```
+
+### Production
+```bash
+npm run build      # Build for production
+npm run preview    # Preview production build
+```
+
+## 🚀 Assignment Completion
+
+This project successfully implements all required features:
+
+✅ **Core Requirements**
+- Get all blogs using TanStack Query
+- Individual blog detail views
+- Create new blogs with form validation
+- Query invalidation after mutations
+
+✅ **Technical Requirements**
+- TypeScript throughout the application
+- TanStack Query for data fetching
+- Tailwind CSS for styling
+- shadcn/ui components
+
+✅ **Quality Standards**
+- Clean, organized code structure
+- Error handling and loading states
+- Responsive design
+- Professional UI/UX
+
+## 👨‍💻 Developer
+
+Built with ❤️ for the CA Monk technical assessment.
+
+---
+
+**Tech Stack**: React • TypeScript • TanStack Query • Tailwind CSS • shadcn/ui • Vite
   - 📚 [Documentation](https://ui.shadcn.com/)
 
 ## UI Reference
