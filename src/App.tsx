@@ -1,35 +1,97 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import { Blog } from '@/types/blog';
+import { BlogList } from '@/components/BlogList';
+import { BlogDetail } from '@/components/BlogDetail';
+import { CreateBlogForm } from '@/components/CreateBlogForm';
+import { Button } from '@/components/ui/button';
+import { ArrowLeft } from 'lucide-react';
+
+type View = 'blog' | 'create';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [selectedBlog, setSelectedBlog] = useState<Blog | null>(null);
+  const [currentView, setCurrentView] = useState<View>('blog');
+  const [showDetail, setShowDetail] = useState(false);
+
+  const handleSelectBlog = (blog: Blog) => {
+    setSelectedBlog(blog);
+    setCurrentView('blog');
+    setShowDetail(true);
+  };
+
+  const handleCreateNew = () => {
+    setCurrentView('create');
+    setSelectedBlog(null);
+    setShowDetail(true);
+  };
+
+  const handleCreateSuccess = () => {
+    setCurrentView('blog');
+    setShowDetail(false);
+  };
+
+  const handleCreateCancel = () => {
+    setCurrentView('blog');
+    setShowDetail(false);
+  };
+
+  const handleBackToList = () => {
+    setShowDetail(false);
+    setSelectedBlog(null);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="min-h-screen bg-gray-50">
+      <div className="container mx-auto px-4 py-8">
+        <header className="mb-8">
+          <h1 className="text-4xl font-bold text-gray-900 mb-2">CA Monk Blog</h1>
+          <p className="text-gray-600">Welcome to our finance and accounting blog</p>
+        </header>
+
+        <div className="grid lg:grid-cols-2 gap-8">
+          {/* Left Panel - Blog List (hidden on mobile when detail is shown) */}
+          <div className={`lg:h-[calc(100vh-12rem)] lg:overflow-y-auto ${
+            showDetail ? 'hidden lg:block' : 'block'
+          }`}>
+            <BlogList
+              selectedBlog={selectedBlog}
+              onSelectBlog={handleSelectBlog}
+              onCreateNew={handleCreateNew}
+            />
+          </div>
+
+          {/* Right Panel - Blog Detail or Create Form (hidden on mobile when not needed) */}
+          <div className={`lg:h-[calc(100vh-12rem)] lg:overflow-y-auto ${
+            showDetail ? 'block' : 'hidden lg:block'
+          }`}>
+            {/* Back button for mobile */}
+            {showDetail && (
+              <div className="lg:hidden mb-4">
+                <Button
+                  onClick={handleBackToList}
+                  variant="outline"
+                  size="sm"
+                  className="mb-4"
+                >
+                  <ArrowLeft className="w-4 h-4 mr-2" />
+                  Back to List
+                </Button>
+              </div>
+            )}
+
+            {currentView === 'create' ? (
+              <CreateBlogForm
+                onCancel={handleCreateCancel}
+                onSuccess={handleCreateSuccess}
+              />
+            ) : (
+              <BlogDetail blog={selectedBlog} />
+            )}
+          </div>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
