@@ -1,4 +1,4 @@
-# CA Monk Blog Application ✅
+# CA Monk Blog Application 
 
 A modern, responsive blog application built with React, TypeScript, TanStack Query, Tailwind CSS, and shadcn/ui components.
 
